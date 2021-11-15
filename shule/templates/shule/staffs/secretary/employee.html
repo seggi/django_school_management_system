@@ -1,0 +1,140 @@
+
+<div id="employee-pop-screen-sec" class="employee-pop-modal" style="display:none;">
+    <div id="employee-pop-form" class="pop-form animate">
+        <span class="close" onclick="closeemployeeModalpop()">×</span>
+        <form action=""  id="main_form_register_employee" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Enregistre un nouveau employee</h1>
+            </div>
+            <br>
+            <br>
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="first_name">Nom</label>
+                    <input type="text" name="first_name" placeholder="Nom..." required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="last_name">Post nom</label>
+                    <input type="text" name='last_name' placeholder="Post nom..." required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="nickname">Pres-nom</label>
+                    <input type="text" name="nickname" placeholder="Pres-nom..." >
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="gender">Gender</label>
+                    <select name="gender" required>
+                        <option selected disabled>select_gender</option>
+                        {% for key, value in gender.items %}
+                            <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="age">Date de naissance</label>
+                    <input type="date" name="age" required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Numero de telephone</label>
+                    <input type="text" name="phone" placeholder="Numero de telephone...">
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <select name="employee_function" >
+                        <option selected disabled>selection_par_fonction</option>
+                        {% if diplay_employee|length %}
+                            {% for fonction in diplay_employee %}
+                                <option value="{{ fonction.id }}">{{ fonction.function  }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option>La_list_est_encore_vide</option>
+                        {% endif %}
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <input type="hidden" name="hidden_employee1">
+                </div>
+                <div class="form-item">
+                    <button type="button" id="btn_register_employee1" >Enregistre</button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+<div id="employee-main-content-right" style="display: none;">
+    <div class="top-employee-main-content-right">
+        <h1>List des employees...</h1>
+    
+        <div class="one-top-employee-main-content-right">
+            <div class="employee-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_admin_t1">
+            </div>
+
+            <div class="employee-right-box" >
+                <ul id="ajoute-box" style="margin-left: 100px;">
+                    <li>
+                        <a onclick="openemployeeModalpop()" ><b style="font-size: 20px;">+</b>Employees</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <div class="employee-left-box" style="width: 95.5%; ">
+            <div class="employee-form-content" style="display: inline-flex"> 
+                <form action="" id="main_form_employees_registered" autocomplete="off" style="width: 100%; ">
+                    {% csrf_token %}
+                    <select name="display_employee_work">
+                        <option selected disabled>selection_par_fonction</option>
+                        {% if show_employee|length %}
+                            {% for employee in show_employee %}
+                                <option value="{{ employee.id }}">{{ employee.function  }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option>La_list_est_encore_vide</option>
+                        {% endif %}
+                    </select>
+                    <input type="hidden" name="employee_reg_hidden1">
+                    <button type="button" style="margin-left: 5px; margin-top: 10px;"
+                     id="btn_display_employee_registered">Affichez</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-employee-main-content-right">
+        <table style="width: 98%; overflow-x:auto;" id="main_employee_list" class="order-table table">
+            <thead>
+                <tr>
+                    <th  scope='col'>
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th>Noms</th>
+                    <th>Gender</th>
+                    <th>Naissance</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>function</th>
+                </tr>
+            </thead>
+            <tbody id="update_tbl6">
+            <!-- Took from Jquery -->
+            </tbpdy>
+        </table>
+    </div>
+</div> 

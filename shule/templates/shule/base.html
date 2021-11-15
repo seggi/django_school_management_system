@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block header %} 
+            <title>{% block title %} {% endblock %}</title>
+            <link rel="stylesheet" type="text/css" href="{% static 'shule/css/base.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'shule/css/login.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'shule/css/main.css' %}"> 
+            <link rel="stylesheet" type="text/css" href="{% static 'shule/css/main_extend.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'shule/css/main_extend1.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'shule/css/main_extend2.css' %}">
+            {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'nk_study/css/mainstaff.css' %}"> {% endcomment %}
+        {% endblock %}
+    </head>
+    <body id="all-body" onload="startTime()">
+        {% block content %}
+            
+        {% endblock %}
+    </body>
+
+    <footer >
+        {% block footer %}
+
+        {% endblock footer %}
+    </footer>
+    {% block script %}
+
+    <script type="text/javascript" src="{% static 'shule/js/jquery/jquery-3.2.1.min.js' %}"></script>
+
+    <!-- Admin session ......... -->
+    <script type="text/javascript" src="{% static 'shule/js/main_tools.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/fees_tools.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/admin_person_tbl.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/ajax/main_admin_post.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/admin_transition_screens.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/location.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/register_staff.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/ajax/staff_tbl_list.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/table_pagination.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/save_level.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/payement_fixe.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/modal_pop.js' %}"></script>
+
+    <!-- Sec session ............. -->
+    <script type="text/javascript" src="{% static 'shule/js/jquery/sec/sec_transition_screens.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/sec/pop_modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/sec/manage_product.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/sec/register_student.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/cachier/student_payment.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/cachier/pop_modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/cachier/content_modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/datetime.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/cachier/extend_pop_modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/cachier/cachieroutlay.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/cachier/rapport.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/cachier/switchscreens.js' %}"></script>
+    <script type="text/javascript" src="{% static 'shule/js/jquery/cachier/display_tbl_activities.js' %}"></script>
+    
+    <!-- defautl model window............ -->
+    <script type="text/javascript" src="{% static 'shule/js/new_modal_window.js' %}"></script>
+
+    {% endblock %}
+        
+</html>

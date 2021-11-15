@@ -1,0 +1,181 @@
+<form style="display: none;" id="dplftn-form">
+    {% csrf_token %}
+    <input type="hidden" name="getftn" id="getftn">
+</form>
+
+
+<!-- Dlt modal -->
+<div id="dlt-pop-screen" class="cours-pop-modal" style="display:none;">
+    <div id="modal" class="pop-form animate" style="height:auto;">
+        <span class="close" onclick="closeDltEmpModal()">×</span>
+        <form id="dlt-emp-form">
+            {% csrf_token %}
+            <h1>Retirer de la list...</h1>
+            <label style="font-size: 20px;">Etez-vous sure? que vous voulez retirer la personne.</label>
+            <input type="hidden" name="rmv_emp" id="rmv_emp">
+            <button type="button" id="btn-dlt-emp-form" style="width: 100px;">Oui</button>
+        </form>
+    </div>
+</div>
+
+<!-- Edt modal -->
+<form id="hidden-edt-emp-form" style="display: none;">
+    {% csrf_token %}
+    <input type="hidden" name="edt_emp" id="edt_emp">
+</form>
+
+<div id="edt-pop-screen" class="cours-pop-modal" style="display:none;">
+    <div id="modal" class="pop-form animate" style="height:auto; overflow: auto;">
+        <span class="close" onclick="closeEdtEmpModal()">×</span>
+        <form id="edt-emp-form">
+            {% csrf_token %}
+            <label style="font-size: 20px;">Actualiser</label>
+            <br/>
+            <br/>
+            <div class="form-item">
+                <label style="font-size: 11px;">Nom</label>
+                <input type="text" name="name" id="edtname"  readonly placeholder="Actualiser le nom">
+            </div>
+            <br/>
+            <div class="form-item">
+                <label style="font-size: 11px;">Post-nom</label>
+                <input type="text" name="lastname" id="edtlastname" readonly placeholder="Actualiser le post-nom">
+            </div>
+            <br/>
+            <div class="form-item">
+                <label style="font-size: 11px;">Pre-nom</label>
+                <input type="text" name="nickname" id="edtnickname" readonly placeholder="Actualiser le pre-nom">
+            </div>
+            <br/>
+            <div class="form-item">
+                <label style="font-size: 11px;">Salaire</label>
+                <input type="number" name="salary" id="edtamount" placeholder="Actualiser le salaire">
+            </div>
+            <br/>
+            <input type="hidden" name="get_item_id" id="get-item-id">
+            <button type="button" id="btn-edt-emp-form" style="width: 100px;">Actualiser</button>
+        </form>
+    </div>
+</div>
+
+
+<div id="personnel-pop-screen4" class="personnel-pop-modal" style="display:none;">
+    <!-- <div id="personnel-pop-form" class="pop-form animate"> -->
+    <div id="modal" class="pop-form animate" style="height:auto;">
+        <span class="close" onclick="closepersonnelModal()">×</span>
+        <form action="" method="post"  id="main_form_personnel" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoute category ou groupe d'employee</h1>
+            </div>
+            <br>
+
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="">Tritre</label>
+                    <input type="text" name="personnel" placeholder="Tritre ou groupe d'employee" required>
+                    <input type="hidden" name="personnel_hidden" >
+                </div>
+                <br>
+                <br>
+                <p style="color:seagreen;"></p>
+
+                <div class="form-item">
+                    <button type="button" id="btn_save_personnel" >Enregistre</button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+
+
+<div id="personnel-main-content-right" style="display: none">
+    <div class="top-personnel-main-content-right">
+        <h1>Groupe d'employee...</h1>
+    
+        <div class="one-top-personnel-main-content-right">
+            <div class="personnel-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_admin_t1">
+            </div>
+
+            <div class="personnel-right-box" >
+                <ul id="ajoute-box" style="margin-left: 100px;">
+                    <li>
+                        <a onclick="openpersonnelModal2()" ><b style="font-size: 20px;">+</b>Catergory d'employee</a>
+                        <a id="btnftn" onclick="displayFuctiontbl();">Retour</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <!-- <div class="personnel-left-box" style="width: 95.5%; ">
+            <div class="personnel-form-content" style="display: inline-flex"> 
+                <form action="" method="post" autocomplete="off" style="width: 100%; ">
+                    {% csrf_token %}
+                    <input type="submit" value="Affichez" style="margin-left: 5px; margin-top: 10px;">
+                </form>
+            </div>
+        </div> -->
+    </div>
+    
+    <div class="bottom-personnel-main-content-right" id="main-content-tbl-admin">
+        <table style="width: 50%; overflow-x:auto;" id="main_personnel_t" >
+            <thead>
+                <tr>
+                    <th  scope='col' style="width: 10%;">
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th style="width: 15%;">Nomero</th>
+                    <th>Titre</th>
+                    <th>Activites</th>
+
+                </tr>
+            </thead>
+            <tbody>
+              {% if employeFunc|length %}
+                    {% for personnel in employeFunc %}
+                        <tr>
+                            <td scope='col'>
+                                <span>
+                                    <input id="action-toggle" name="selectTbl" 
+                                     type="checkbox" value="{{ personnel.id }}">
+                                </span>
+                            </td>
+                            <td>{{ personnel.id }}</td>
+                            <td>{{ personnel.title }}</td>
+                            <td><center><a class="btn-prn-dts" name="{{ personnel.id }}">Afficher</a></center></td>
+                        </th>
+                    {% endfor %}
+            {% else %}
+                <p>Aucune donnees disponible</p>
+            {% endif %}
+            </tbpdy>
+        </table>
+
+        <div class="tbl-right" id="tbl-right">
+            <table style="width: 90%; overflow-x:auto;" id="main_personnel_t1" class="order-table table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Noms</th>
+                        <th>Post-nom</th>
+                        <th>Pre-nom</th>
+                        <th>Salary</th>
+                        <th>Activites</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </th>   
+                  </tbpdy>
+            </table>
+        </div>
+    </div>
+</div> 

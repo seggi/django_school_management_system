@@ -1,0 +1,224 @@
+{% comment %} Maternelle {% endcomment %}
+<div id="cours-pop-screen" class="cours-pop-modal" style="display:none;">
+    <div id="cours-pop-form" class="pop-form animate">
+        <span class="close" onclick="closecoursModal2()">×</span>
+        <form action="" method="post"  id="main_form_cachier" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoutez le niveau cours</h1>
+            </div>
+            {% if mat_msg|length %}
+                 {{ mat_msg }}
+            {% endif %}
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ mat_form.level.id_for_label }}">Niveaux</label>
+                    {{ mat_form.matlevel }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Classes</label>
+                    <select name="matselect">
+                        {% if display_mat_class|length %}
+                            {% for mat_class in display_mat_class %}
+                                <option value={{ mat_class.id }}>{{ mat_class.classes }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ mat_form.matcours.id_for_label }}">Nom du cours</label>
+                    {{ mat_form.matcours }}
+                </div>
+
+
+                <div class="form-item">
+                    <input type="submit" name="submitbtn7" value"Enregistre">
+                    {% comment %} <button type="button" id="btn_save_cachier" onclick="formSumbit();">Enregistre</button> {% endcomment %}
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+{% comment %} Primaire {% endcomment %}
+
+<div id="cours-pop-screen1" class="cours-pop-modal" style="display:none;">
+    <div id="cours-pop-form" class="pop-form animate">
+        <span class="close" onclick="closecoursModal3()">×</span>
+        <form action="" method="post"  id="main_form_cachier" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoutez le niveau cours</h1>
+            </div>
+            {% if prim_msg|length %}
+                 {{ prim_msg }}
+            {% endif %}
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ prim_form.primlevel.id_for_label }}">Niveaux</label>
+                    {{ prim_form.primlevel }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Classes</label>
+                    <select name="primselect">
+                        {% if display_prim_class|length %}
+                            {% for prim_class in display_prim_class %}
+                                <option value={{ prim_class.id }}>{{ prim_class.classes }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ prim_form.primcours.id_for_label }}">Nom du cours</label>
+                    {{ prim_form.primcours }}
+                </div>
+
+                <div class="form-item">
+                    <input type="submit" name="submitbtn8" value"Enregistre">
+                    {% comment %} <button type="button" id="btn_save_cachier" onclick="formSumbit();">Enregistre</button> {% endcomment %}
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+{% comment %} Secondaire {% endcomment %}
+
+<div id="cours-pop-screen2" class="cours-pop-modal" style="display:none;">
+    <div id="cours-pop-form" class="pop-form animate">
+        <span class="close" onclick="closecoursModal4()">×</span>
+        <form action="" method="post"  id="main_form_cachier" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoutez le niveau cours</h1>
+            </div>
+            {% if secon_msg|length %}
+                 {{ secon_msg }}
+            {% endif %}
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ secon_form.seclevel.id_for_label }}">Niveaux</label>
+                    {{ secon_form.seclevel }}
+                </div>
+
+                 <div class="form-item" style="width:90%;">
+                    <label for="">Classes</label>
+                    <select name="secselect">
+                        {% if display_secon_class|length %}
+                            {% for secon_class in display_secon_class %}
+                                <option value={{ secon_class.id }}>{{ secon_class.classes }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+
+                 <div class="form-item" style="width:90%;">
+                    <label for="">Faculty</label>
+                    <select name="seconselectfaculty">
+                        {% if display_func_class|length %}
+                            {% for fuc_class in display_func_class %}
+                                <option value={{ fuc_class.id }}>{{ fuc_class.classes }}_{{ fuc_class.faculty }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ secon_form.seccours.id_for_label }}">Nom du cours</label>
+                    {{ secon_form.seccours }}
+                </div>
+
+
+                <div class="form-item">
+                    <input type="submit" name="submitbtn9" value"Enregistre">
+                    {% comment %} <button type="button" id="btn_save_cachier" onclick="formSumbit();">Enregistre</button> {% endcomment %}
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+
+<div id="cours-main-content-right" style="display: none;">
+    <div class="top-cours-main-content-right">
+        <h1>List des cours que vous arganisons...</h1>
+    
+        <div class="one-top-cours-main-content-right">
+            <div class="cours-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_admin_t1">
+            </div>
+
+            <div class="cours-right-box" >
+                <ul id="ajoute-box" style="margin-left: 100px;">
+                    <li>
+                        <a onclick="opencoursModalCours()" ><b style="font-size: 20px;">+</b>Cours</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <div class="cours-left-box" style="width: 95.5%; ">
+            <div class="cours-form-content" style="display: inline-flex"> 
+                <form action="" method="post" autocomplete="off" 
+                        style="width: 100%; ">
+                    {% csrf_token %}
+                    {{ level_cours_form.levelcours }}
+
+                    {% comment %} <select name="cours-fonction" style="margin-left: 20px" >
+                        <option value="" selected disabled hidden>Selectionne_classe</option>
+                        {% for key, values in fonctions.items %}
+                            <option value="{{ key }}">{{ values }}</option>
+                        {% endfor %}
+                    </select> {% endcomment %}
+     
+                    <input type="submit" value="Affichez" style="margin-left: 5px; margin-top: 10px;">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-cours-main-content-right">
+        <table style="width: 98%; overflow-x:auto;" id="main_cours_t1" class="order-table table">
+            <thead>
+                <tr>
+                    <th  scope='col'>
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th>Niveau</th>
+                    <th>Classe</th>
+                    <th>Faculte</th>
+                    <th>Cours</th>
+
+                </tr>
+            </thead>
+            <tbody>
+              {% if display_level_cours|length %}
+                    {% for cours in display_level_cours %}
+                        <tr>
+                            <td scope='col'>
+                                <span>
+                                    <input id="action-toggle" name="selectTbl" 
+                                     type="checkbox" value="{{ cours.id }}">
+                                </span>
+                            </td>
+                            <td>{{ cours.level }}</td>
+                            <td>{{ cours.classes }}</td>
+                            <td>{{ cours.faculty }}</td>
+                            <td>{{ cours.cours }}
+                            
+                        </th>
+                    {% endfor %}
+                {% else %}
+                <p>La list des de cours est vide</p>
+            {% endif %}
+            </tbpdy>
+        </table>
+    </div>
+</div> 

@@ -1,0 +1,63 @@
+{% extends "shule/base.html" %}
+{% load static %}
+
+{% block title %}Admin Session{% endblock %}
+{% block content %}
+ <div class="all-content">
+    
+    <div class="inner-all-content">
+        <div id="top-content">
+            <div class="left-top-content">
+                <div id="site-logo">
+                    <h1><a href="{% url 'login' %}">nk</a></h1>
+                </div>
+            </div>
+            <div class="right-top-content">
+                {% csrf_token %}
+                <strong>{{ username }}</strong>
+                <a href="#">Visite</a>
+                |
+                <a href="#">Contactes</a>
+                |
+                <a href="#">Changer mot de passe</a>
+                |
+                <a href="{% url 'logout' %}">Deconnection</a>
+
+            </div>
+        </div> 
+
+        <div id="bottom-content">
+          <div id="main-content">
+            <div class="main-content-left">
+                <div class="inner-main-content-left">
+                    <a href="#" id="open1" onclick="switchToPaiement();">Finance</a>
+                    <a href="#" id="open2" onclick="switchToSalaire();">Depense</a>
+                    <a href="#" id="open3" onclick="switchToVente();">Vente</a>
+                    <a href="#" id="open4" onclick="switchToRapport();">Rapport</a>
+                </div>
+            </div>
+
+            <div class="main-content-right">
+                {% include "shule/staffs/cachier/paiement.html" %}
+                {% include "shule/staffs/cachier/outlay.html" %}
+                {% include "shule/staffs/cachier/sell.html" %}
+                {% include "shule/staffs/cachier/rapport.html" %}
+                <div style="text-align: center; margin: 10%; padding: 10%; color: #333; display: none;" id="welcom2">
+                    <h1>Wecolme to nanKim school system</h1>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    <div id="foot-content">
+        <h1>nanKim</h1>
+    </div>
+    
+{% endblock footer %}
+
+ 

@@ -1,0 +1,43 @@
+{% extends "shule/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+ <div class='all-content'>
+    <div class="log-content">
+        <div class="box-log-content">
+            <div id="title-item">
+                <h2>Admin</h2>
+            </div>
+            <div class="log-box">
+                <form method="post" id="login-session" autocomplete="off">
+                    {% csrf_token %}
+                    <div class="log-item">
+                    {{ form.non_field_errors}}
+                    </div>
+                    
+
+                   <div class="log-item">
+                        <label for="{{ form.username.id_for_label }}">Username</label>
+                        {{ form.username }}
+                    </div>
+
+                    <div class="log-item">
+                         <label for="{{ form.password.id_for_label }}">Password</label>
+                        {{ form.password }}
+                    </div>
+                   
+                    <div class="log-item">
+                        <input type="submit" value="Se connecter">
+                        <p><a href="{% url 'signup' %}">Pas de compte!, click ici pour s'enregistrer.</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

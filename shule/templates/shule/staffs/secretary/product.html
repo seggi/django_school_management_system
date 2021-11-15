@@ -1,0 +1,121 @@
+
+<div id="cours-pop-screen-sec" class="cours-pop-modal" style="display:none;">
+    <div id="cours-pop-form" class="pop-form animate">
+        <span class="close" onclick="closecoursModalpop()">×</span>
+        <form action="" method="post"  id="main_form_save_product" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoutez le nauveau produit</h1>
+            </div>
+            <br>
+            <br>
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="articles">Produit</label>
+                    <input type="text" name="articles" placeholder="Nom du produit..." required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Quantite</label>
+                    <input type="number" name='quantity' placeholder="Quantite..." required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="unit_price">Prix unitaire</label>
+                    <input type="number" name="unit_price" placeholder="Prix unitaire" required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <!-- <label for="tot_price">Prix unitaire</label> -->
+                    <!-- <input type="number" name="tot_price" placeholder="Prix total" required> -->
+                    <input type="hidden" name="hidden_article">
+                </div>
+                <div class="form-item">
+                    <button type="button" id="btn_save_product" onclick="formSumbit();">Enregistre</button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+
+
+<div id="product-main-content-right" style="display: none">
+    <div class="top-product-main-content-right">
+        <h1>List d'articles...</h1>
+    
+        <div class="one-top-product-main-content-right">
+            <div class="product-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_admin_t1">
+            </div>
+
+            <div class="product-right-box" >
+                <ul id="ajoute-box" style="margin-left: 100px;">
+                    <li>
+                        <a onclick="openproductModalpop()" ><b style="font-size: 20px;">+</b>Produits</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <div class="product-left-box" style="width: 95.5%; ">
+            <div class="product-form-content" style="display: inline-flex"> 
+                <form action="" id="main_form_display_products" autocomplete="off" style="width: 100%; ">
+                    {% csrf_token %}
+                    <select name="search_article" id="display_level_list1">
+                        <option selected disabled>selection_de_produits</option>
+                        {% if display_product|length %}
+                            {% for product in display_product %}
+                                <option value="{{ product.id }}">{{ product.article }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                    <button type="button" style="margin-left: 5px; margin-top: 10px;"
+                     id="btn_display_product1">Affichez</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-product-main-content-right">
+        <table style="width: 98%; overflow-x:auto;" id="main_product_t1" class="order-table table">
+            <thead>
+                <tr>
+                    <th  scope='col'>
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th>Article</th>
+                    <th>Prix unitaire</th>
+                    <th>Quantite</th>
+                    <th>Prix total</th>
+                    <th>Stock</th>
+                    <th>Entre stock</th>
+                </tr>
+            </thead>
+            <tbody id="update_tbl3">
+              <!-- {% if display_level_product|length %}
+                    {% for product in display_level_product %}
+                        <tr>
+                            <td scope='col'>
+                                <span>
+                                    <input id="action-toggle" name="selectTbl" 
+                                     type="checkbox" value="{{ product.id }}">
+                                </span>
+                            </td>
+                            <td>{{ product }}</td>
+                            <td>{{ product.classes }}</td>
+                            <td>{{ product.faculty }}</td>
+                            <td>{{ product.product }}
+                            
+                        </th>
+                    {% endfor %}
+                {% else %}
+                <p>La list des de product est vide</p>
+            {% endif %} -->
+            </tbpdy>
+        </table>
+    </div>
+</div> 

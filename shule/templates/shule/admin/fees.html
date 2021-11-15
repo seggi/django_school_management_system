@@ -1,0 +1,204 @@
+{% comment %} Fees saved {% endcomment %}
+
+<div id="fees-pop-screen" class="fees-pop-modal" style="display:none;">
+    <div id="fees-pop-form" class="pop-form animate">
+        <span class="close" onclick="closefeesModal2()">×</span>
+        <form action="" method="post"  id="main_form_fee_type" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoute les differents type de paiements</h1>
+            </div>
+            <br>
+
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="">Intituler</label>
+                    <input type="text" name="type-frais" placeholder="Intituler" required>
+                </div>
+
+                <div class="form-item">
+                    <button type="button" id="btn_save_fee_type" >Enregistre</button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+{% comment %} Payment {% endcomment %}
+
+<div id="fees-pop-screen1" class="fees-pop-modal" style="display:none;">
+    <div id="fees-pop-form" class="pop-form animate">
+        <span class="close" onclick="closefeesModal3()">×</span>
+        <div style="width: 100%; display: inline-block;">
+             <div id="form-title">
+                <h1>Fixer le payment </h1>
+            </div>
+            <br>
+            <br>
+            
+            <form action="" method="post" id="main_form_payment" autocomplete="off" style="display: block">
+                {% csrf_token %}
+                <div id="form-box-style" >  
+                    <div class="form-item" style="width:90%;">
+                        <label for="">Niveau</label>
+                        <select name='select_level1' id="select_level1" required>
+                            <option>selection de niveau</option>
+                        </select>
+                    </div>
+
+                    <div class="form-item" style="width:90%;">
+                        <label for="">Classe</label>
+                        <select name='select_classe1' id='select_classe1' required>
+                            <option selected disabled>selection de classe</option>
+                        </select>
+                    </div>
+
+                    <div class="form-item" style="width:90%;">
+                        <label for="">faculte</label>
+                        <select name="selected_facutly1" id='select_facutly1'>
+                            <option selected disabled>selection de faculte</option>
+                        </select>
+                    </div>
+
+                    <div class="form-item" style="width:90%;">
+                        <label for="">Type de frais</label>
+                        <select name="select_fee_type" id="fee_fixed">
+                            {{ fee_type }}
+                            {%  if fee_type|length %}
+                                {% for fee  in fee_type %}
+                                    <option value="" selected disabled>Selection_de_paiement</option>
+                                    <option value="{{ fee.id }}">{{ fee.title }}</option>
+                                {% endfor %}
+                            {% else %}
+                                <p>Pas de donnees</p>
+                            {% endif %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-item" style="width:90%;">
+                        <label for="">Intervalle</label>
+                        <select name="periode" id='periode'>
+                            <option value="" selected disabled>Selection_de_periode_de_paie</option>
+                            {% if payment_periode|length %}
+                                {% for periode in payment_periode %}
+                                    <option value="{{ periode.id }}">{{ periode.name }}</option>
+                                {% endfor %}
+                            {% else %}
+                                <p>Pas de donnees</p>
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    <div class="form-item" style="width:90%;">
+                        <label for="">Montant globale</label>
+                        <input type="number" name="tot_amount" placeholder="Entre motant globale" required>
+                        <input type="hidden" name="input_save_payment">
+                    </div>
+
+                    <div class="form-item" style="width:90%;">
+                        <label for="">Payaiement par tranche</label>
+                        <input type="number" name="fixe_payment_periode" placeholder="Entre montant par tranche" required>
+                        <input type="hidden" name="input_save_payment">
+                    </div>
+
+                    <div class="form-item">
+                        <button type="button" id="btn_save_fixe_payment" >Enregistre</button>
+                    </div>
+                </div>
+            </form>  
+        </div>
+        
+    </div>
+</div> 
+
+<!-- Period  adding session -->
+<div id="fees-pop-screen4" class="fees-pop-modal" style="display:none;">
+    <div id="fees-pop-form" class="pop-form animate">
+        <span class="close" onclick="closefeesModal6()">×</span>
+        <form action="" method="post"  id="main_form_periode" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoute periode de paiement</h1>
+            </div>
+            <br>
+
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="">Intituler</label>
+                    <input type="text" name="periode" placeholder="Intituler" required>
+                    <input type="hidden" name="add_period" >
+                </div>
+                <br>
+                <br>
+                <p style="color:seagreen;">Ex: Annees, Trimistre...</p>
+
+                <div class="form-item">
+                    <button type="button" id="btn_save_periode" >Enregistre</button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+<!-- ################################## -->
+
+<div id="fees-main-content-right" style="display: none">
+    <div class="top-fees-main-content-right">
+        <h1>Liste  des frais...</h1>
+    
+        <div class="one-top-fees-main-content-right">
+            <div class="fees-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_admin_t1">
+            </div>
+
+            <div class="fees-right-box" >
+                <ul id="ajoute-box" style="margin-left: 100px;">
+                    <li>
+                        <a onclick="openfeesModal2()" ><b style="font-size: 20px;">+</b>Type de frais</a>
+                        <a onclick="openfeesModal3()" ><b style="font-size: 20px;">+</b>Fixe frais</a>
+                        <a onclick="openfeesModal6()" ><b style="font-size: 20px;">+</b>Periode</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <div class="fees-left-box" style="width: 95.5%; margin-left: 5px; ">
+            <div class="fees-form-content" style="display: inline-flex"> 
+                <form action="" id="main_form_show_payment_details1" autocomplete="off" style="width: 100%; ">
+                    {% csrf_token %}
+                    <select name="fee_search1" id="display_level_list1">
+                        <!-- <option selected disabled>selection_par_niveau</option> -->
+                    </select>
+                    <button type="button" value="Affichez" style="margin-left: 5px; margin-top: 10px;"
+                     id="btn_diplay_todo_payment1">Affichez</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-fees-main-content-right">
+        <table style="width: 98%; overflow-x: auto;" id="main_fees_t1" class="order-table table">
+            <thead>
+                <tr>
+                    <th  scope='col'>
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th>Classe</th>
+                    <th>Faculte</th>
+                    <th>Categories</th>
+                    <th>Period</th>
+                    <th>Par tranche</th>
+                    <th>Montant tot</th>
+                </tr>
+            </thead>
+            <tbody id="update_tbl2">
+                <tr >
+                    
+                </th>
+            </tbpdy>
+        </table>
+    </div>
+</div> 

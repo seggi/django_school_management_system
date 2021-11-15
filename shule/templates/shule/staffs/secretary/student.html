@@ -1,0 +1,173 @@
+
+<div id="student-pop-screen-sec" class="student-pop-modal" style="display:none;">
+    <div id="student-pop-form" class="pop-form animate">
+        <span class="close" onclick="closestudentModalpop()">×</span>
+        <form action=""  id="main_form_register_student" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Enregistre un nouveau eleve</h1>
+            </div>
+            <br>
+            <br>
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="first_name">Nom</label>
+                    <input type="text" name="first_name" placeholder="Nom..." required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="last_name">Post nom</label>
+                    <input type="text" name='last_name' placeholder="Post nom..." required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="nickname">Pres-nom</label>
+                    <input type="text" name="nickname" placeholder="Pres-nom..." >
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="sex">Gender</label>
+                    <select name="sex" required>
+                        <option selected disabled>select_gender</option>
+                        {% for key, value in student_gender.items %}
+                            <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="age">Age</label>
+                    <input type="date" name="age" required>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="level">Level</label>
+                    <select name="level" id="select_level1" required>
+                        <option></option>
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="classe">Classe</label>
+                    <select name="classe" id="select_classe1" required>
+                        <option></option>
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="faculty">Faculte</label>
+                    <select name="faculty" id="select_facutly1" >
+                        <option></option>
+                    </select>
+                </div>
+                <br>
+                <br>
+
+                <h4>Parent</h4>
+                <div class="form-item" style="width:90%;">
+                    <label for="">Nom</label>
+                    <input type="text" name="parent_name" placeholder="Nom...">
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Post-nom</label>
+                    <input type="text" name="parent_lastname" placeholder="Post-nom...">
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="sex">Gender</label>
+                    <select name="parent_gender" required>
+                        <option selected disabled>select_gender</option>
+                        {% for key, value in gender.items %}
+                            <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Address</label>
+                    <input type="text" name="location_address" placeholder="City/Quater/Number....">
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Numero de telephone</label>
+                    <input type="text" name="phone" placeholder="Numero de telephone...">
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <input type="hidden" name="hidden_student1">
+                </div>
+                <div class="form-item">
+                    <button type="button" id="btn_register_student1" >Enregistre</button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+<div id="student-main-content-right" style="display: none;">
+    <div class="top-student-main-content-right">
+        <h1>List des eleves inscrient...</h1>
+    
+        <div class="one-top-student-main-content-right">
+            <div class="student-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_admin_t1">
+            </div>
+
+            <div class="student-right-box" >
+                <ul id="ajoute-box" style="margin-left: 100px;">
+                    <li>
+                        <a onclick="openstudentModalpop()" ><b style="font-size: 20px;">+</b>Eleves</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <div class="student-left-box" style="width: 95.5%; ">
+            <div class="student-form-content" style="display: inline-flex"> 
+                <form action="" id="main_form_display_students_registered" autocomplete="off" style="width: 100%; ">
+                    {% csrf_token %}
+                    <select name="search_level" >
+                        <option selected disabled>selection_par_niveau</option>
+                        {% if display_level|length %}
+                            {% for level in display_level %}
+                                <option value="{{ level.id }}">{{ level.level }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option>La_list_est_encore_vide</option>
+                        {% endif %}
+                    </select>
+                    <input type="hidden" name="student_level_hidden">
+                    <button type="button" style="margin-left: 5px; margin-top: 10px;"
+                     id="btn_display_student_registered">Affichez</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-student-main-content-right">
+        <table style="width: 98%; overflow-x:auto;" id="main_student_list" class="order-table table">
+            <thead>
+                <tr>
+                    <th  scope='col'>
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th>Noms</th>
+                    <th>Gender</th>
+                    <th>Naissance</th>
+                    <th>Classe</th>
+                    <th>Faculte</th>
+                    <th>Parent</th>
+                    <th>Address</th>
+                    <th>Contacte</th>
+                </tr>
+            </thead>
+            <tbody id="update_tbl5">
+            <!-- Took from Jquery -->
+            </tbpdy>
+        </table>
+    </div>
+</div> 

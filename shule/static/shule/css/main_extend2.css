@@ -1,0 +1,830 @@
+.cachier-pop-modale-right-session {
+    float: right;
+    margin-right: 60px;
+    box-sizing: border-box;
+}
+
+/* dropdown======================== */
+.dropdownbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  .dropdownbtn:hover, .dropdownbtn:focus {
+      background-color: #2980B9;
+  }
+
+
+
+.dropdown1 {
+   display: inline-block;
+   position: relative;
+}
+
+.box-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 89px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 10px;
+    margin-left: 5px;
+    box-sizing: content-box;
+}
+
+.box-content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    
+}
+
+.dropdown1 a:hover { background-color: #ddd;}
+
+.displayed { display: block;}
+
+
+/* Show-payment session */
+.show-paiement-content {
+    display: block;
+    width: 100%;
+    /* float: right;
+    margin-right: 20px; */
+}
+
+.show-paiement-content select , input {
+    display: block;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
+
+.show-paiement-content select {
+    width: 90%;
+    border: 1px solid rgb(207, 207, 207);
+}
+
+.show-paiement-content button {
+    margin-left: 10px; 
+    margin-top: 0px; 
+    border: 1px solid dodgerblue; 
+    box-sizing: border-box;
+    width: 90%;
+}
+
+/* paiement recouvre */
+
+.cachier-recouvre-modale-right{
+    width: 90%; 
+    display: inline-flex;
+    margin-top: -10px; 
+    border: 1px solid rgb(211, 211, 211); 
+    background: #f8f8f8;
+}
+
+
+/* DropDown selection  */
+
+.btn_search_student1_recouvre{
+    width: 100px; 
+    height: 37px; 
+    margin-top: 0px;
+    border: 1px solid dodgerblue; 
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.btn_search_student1_recouvre:hover, .btn_search_student1_recouvre:focus {
+    background-color: #2980B9;
+}
+
+.box-content1 {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 200px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 0px;
+    margin-left: 5px;
+    box-sizing: content-box;
+}
+
+.box-content1 select{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    
+}
+
+.dropdown2 {
+    display: inline-block;
+    position: relative;
+ }
+ 
+
+.dropdown2 a:hover { background-color: #ddd;}
+
+.displayed1 { display: block;}
+
+
+/* DropDown option  */
+
+.btn_search_student_recouvre {
+    width: 70px; 
+    height: 37px; 
+    margin-top: 5px;
+    border: 1px solid dodgerblue; 
+    margin-left: 5px;
+    cursor: pointer;
+  }
+.btn_search_student_recouvre:hover, .btn_search_student_recouvre:focus {
+      background-color: #2980B9;
+  }
+
+.dropdown3 {
+   display: inline-block;
+   position: relative;
+}
+
+.box-content2 {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 89px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 10px;
+    margin-left: 5px;
+    box-sizing: content-box;
+}
+.optionbtn {
+    width: 80px;
+    height: 37px; 
+    margin-top: 5px;
+    margin-left: 5px;
+    border: none;
+    background: #fff;
+}
+
+.box-content2 .optionbtn{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    
+}
+
+
+.dropdown3 .optionbtn:hover { background-color: #ddd;}
+
+.displayed2 { display: block;}
+
+
+/* POP recover search */
+
+.pop_recorver_small_screen {
+    display: none;
+    text-align: center; 
+    border-top: 1px solid #333;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+
+}
+
+#search_range_form_recouvre{
+    background-color: #fefefe;
+    margin: 4% auto 15% auto;
+    border: 1px solid #888;
+    width: 30%;
+    height: 60%;
+    padding: 30px;
+    border-radius: 0.4rem;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    overflow: auto;
+}
+
+.recorver_search {
+    width: 100%;
+}
+
+.recorver_search p{
+    align-self: center;
+    float: left;
+    margin-top: 10px;
+}
+
+.recorver_search input {
+    margin-left: 10%;
+}
+
+.recorver_search button{
+    width: 100px;  
+    height: 37px; 
+    margin-top: 0px;
+    border: 1px solid dodgerblue; 
+}
+
+.radiobtn-content{
+    width: 100%;
+    display: inline-flex;
+}
+
+#radiobtn {
+    display: block;
+    width: 50%;
+}
+
+#radiobtn input {
+    width: auto;
+    padding-left: 30px;
+}
+#radiobtn p {
+    float: left;
+    width: 100%;
+    margin: 5px;
+}
+
+/* outlay  default btn*/
+
+#search_content_default {
+    width: 95%; 
+    display: flex; 
+    height: 40px;
+
+}
+
+#defaulty_search {
+    float: left; 
+    width: 300px; 
+    margin-top: 0px; 
+    padding: 18px;
+}
+
+.button_align_bar {
+    width: 100%; 
+    display: flex;
+}
+
+.default_align_bar_input {
+    width: 40%; 
+    display: flex;
+}
+
+.principalbtn {
+    width: 80px;
+    height: 37px; 
+    margin-top: 0px;
+    border: 1px solid dodgerblue; 
+    margin-left: 5px;
+
+}
+/* show employee datails */
+/* ===================== */
+
+.details-modals {
+    width: 70%;
+    display: none;
+    border: 1px solid #eee;
+    background: #f8f8f8;
+    margin-bottom: 10px;
+}
+
+.inner-person-modals {
+    width: 100%;
+    display: flex;
+}
+
+.details-left {
+    width:  50%;
+    padding: 8px;
+    margin-left: 30px;
+}
+
+.details-left h2 {
+    color: #333;
+    font-weight: 300;
+    font-size: 18px;
+    margin: 5px;
+}
+
+.person-details {
+    display: flex;
+    font-weight: 400;
+    color: #333;
+}
+
+.person-details label {
+    width: 30%;
+    font-weight: 600;
+    font-size: 15px;
+    margin: 5px;
+}
+
+.person-details h2 {
+    width: 70%;
+    font-weight: 300;
+    font-size: 18px;
+    margin: 5px;
+}
+
+#person-close {
+    float: right;
+    bottom: 0px;
+    right: 0px;
+    background: black;
+    color: white;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    padding: 1px;
+    top: -10px;
+    right: -10px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-right: -10px;
+}
+
+.btn-watch {
+    background-color: rgb(241, 174, 28);
+    border: 1px solid rgb(196, 151, 3);
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    font-weight: 400;
+}
+
+.btn-watch:hover {
+    cursor: pointer;
+}
+
+#btn-histo {
+    width: 10%;
+    height: 10%;
+    text-align: start;
+    align-self: center;
+    border: 1px solid #2980B9;
+    background: #3498DB;
+    padding-left: 5px;
+    margin-right: 10px;
+}
+
+#btn-histo:hover {
+    cursor: pointer;
+    
+}
+
+.btn-save-amount {
+    background-color: rgb(59, 114, 54);
+    border: 1px solid rgb(28, 143, 13);
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    font-weight: 400;
+}
+
+.btn-save-amount:hover {
+    cursor: pointer;
+}
+
+/* Admin side =============== */
+.btn-prn-dts {
+    background-color: rgb(59, 114, 54);
+    border: 1px solid rgb(28, 143, 13);
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    font-weight: 400;
+}
+
+.btn-prn-dts:hover {
+    cursor: pointer;
+}
+
+
+.btn-dlt {
+    background-color: rgb(221, 103, 103);
+    border: 1px solid rgb(255, 17, 0);
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    font-weight: 400;
+}
+
+.btn-dlt:hover {
+    cursor: pointer;
+}
+
+.btn-edt {
+    background-color: rgb(241, 174, 28);
+    border: 1px solid rgb(196, 151, 3);
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    font-weight: 400;
+}
+
+.btn-edt:hover {
+    cursor: pointer;
+}
+
+/* ================================== */
+.product-details {
+    display: block;
+    text-align: center;
+}
+
+.product-details label {
+    font-size: 28px;
+    color:  dodgerblue;
+}
+
+.product-details h2 {
+    font-size: 22px;
+}
+
+
+/* Popup Modal window for delete, update, remove, in all screens */
+/* =============================================================*/
+
+.modal {
+    position: fixed;
+    top: 10%;
+    padding: 40px 50px;
+    border-radius: 8px;
+    background-color: white;
+    z-index: 60000;
+    width: 400px;
+    min-height: 100px;
+    display: block;
+    left: 50%;
+    margin-left: -200px;
+    max-height: 80%;
+    box-sizing: border-box;
+}
+
+.modal .on {
+    display: block;
+}
+
+
+.modal-js-overlay {
+    background: #444;
+    /* opacity: .8; */
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 1000px;
+    z-index: 20000;
+    left: 0px;
+    
+}
+
+.modal-js-close {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background: black;
+    color: white;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    padding: 1px;
+    top: -10px;
+    right: -10px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    
+}
+
+#modal1-window {
+    display: none;
+}
+
+#modal2-window {
+    display: none;
+}
+
+#modal3-window {
+    display: none;
+}
+
+
+.modal button {
+    width:  80%;
+    border: 1px solid #2980B9;
+    border-radius: 4px;
+    background-color:  #3498DB;
+    font-weight: 600;
+    color:  white;
+    font-size: 18px;
+    margin-left: 30px;
+}
+
+.modal button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 2px #5f5f5f;
+}
+
+.modal button:focus {
+    box-shadow: 0px 0px 5px #86e2ee;
+}
+
+.modal label {
+    font-size:  22px;
+    font-weight: 300;
+    padding-top: 0px;
+}
+
+.modal input {
+    width: 100%;
+    margin-left: 0px;
+}
+
+.modal input[type="text"]{
+    padding: 8px;
+}
+
+.modal select {
+    padding: 8px;
+    width: 100%;
+}
+
+
+/* ======================================= */
+#modal {
+    position: fixed;
+    top: 10%;
+    padding: 40px 50px;
+    border-radius: 8px;
+    background-color: white;
+    z-index: 60000;
+    width: 400px;
+    min-height: 100px;
+    display: block;
+    left: 50%;
+    margin-left: -200px;
+    max-height: 80%;
+    box-sizing: border-box;
+}
+
+#modal button {
+    width:  80%;
+    border: 1px solid #2980B9;
+    border-radius: 4px;
+    background-color:  #3498DB;
+    font-weight: 600;
+    color:  white;
+    font-size: 18px;
+    /* margin-left: 30px; */
+}
+
+#modal button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 2px #5f5f5f;
+}
+
+#modal button:focus {
+    box-shadow: 0px 0px 5px #86e2ee;
+}
+
+#modal label {
+    font-size:  22px;
+    font-weight: 300;
+    padding-top: 0px;
+}
+
+#modal input {
+    width: 100%;
+    margin-left: 0px;
+}
+
+#modal input[type="text"]{
+    padding: 8px;
+}
+
+#modal select {
+    padding: 8px;
+    width: 100%;
+}
+
+/* ======================================== */
+/* Repport till */
+
+.summary-modals {
+    width: 97%;
+    display: none;
+    /* border: 1px solid #eee; */
+    background: #f8f8f8;
+    margin-bottom: 10px;
+
+}
+
+.inner-summary-modals {
+    width: 100%;
+    display: flex;
+    margin: 5px auto;
+}
+
+.details-box1 {
+    width: 25%;
+    background-color:  green;
+    text-align: center;
+    display: block;
+    padding: 8px;
+}
+
+.details-box1 label {
+    font-weight: 600;
+    font-size: 28px;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.payment-box {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-left:  20px;
+}
+
+.details-box1 h2 {
+    font-weight: 300;
+    font-size: 22px;
+    color: #fff;
+    box-sizing: border-box;
+    
+}
+
+/* 2 */
+
+.details-box2 {
+    width: 25%;
+    background-color:  royalblue;
+    text-align: center;
+    display: block;
+    margin-left: 10px;
+    padding: 8px;
+}
+
+.details-box2 label {
+    font-weight: 600;
+    font-size: 28px;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.details-box2 h2 {
+    font-weight: 300;
+    font-size: 22px;
+    color: #fff;
+    box-sizing: border-box;
+    
+}
+
+/* 3 */
+
+.details-box3 {
+    width: 25%;
+    background-color:  goldenrod;
+    text-align: center;
+    display: block;
+    margin-left: 10px;
+    padding: 8px;
+}
+
+.details-box3 label {
+    font-weight: 600;
+    font-size: 28px;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.details-box3 h2 {
+    font-weight: 300;
+    font-size: 22px;
+    color: #fff;
+    box-sizing: border-box;
+    
+}
+
+/* new dropdown  */
+
+
+.dropbtn {
+    background-color: #3498DB;
+    color:  white;
+    font-size: 16px;
+    border:  none;
+    cursor: pointer;
+    width: 80px;
+}
+
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    width: auto;
+    position: relative;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover { background-color: #ddd;}
+
+.show {display: block;}
+
+/* ======================== div tbl ================== */
+.split-tbl-content {
+    width: 97%;
+    display: flex;
+}
+
+.split-tbl-content {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.repport-right-content {
+    float: right;
+    width: 25%;
+    display: none;
+    text-align: center;
+    /* border: 1px solid #eee; */
+    margin-bottom: 10px;
+    display: block;
+    
+}
+
+.repport-right-content h1 {
+    font-weight: 300;
+    font-size: 18px;
+    color: #666;
+    text-transform: capitalize;
+    font-family: "Roboto";
+    margin-top: 10px;
+
+}
+
+.repport-right-content h2 {
+    font-weight: 600;
+    font-size: 24px;
+    color: #333;
+    margin-top:  10px;
+    margin-left: 30px;
+}
+
+.dps-repport-right-content {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    background: #f8f8f8;
+    padding: 8px;
+    text-align: left;
+    margin-left: 10px;
+}

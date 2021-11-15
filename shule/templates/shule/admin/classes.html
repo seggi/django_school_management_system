@@ -1,0 +1,161 @@
+<div id="classes-pop-screen" class="classes-pop-modal" style="display:none;">
+    <div id="classes-pop-form" class="pop-form animate">
+        <span class="close" onclick="closeClassesModal2()">×</span>
+        <form action="" method="post"  id="main_form_cachier" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoutez le niveaux et les classes</h1>
+            </div>
+            {% if level_msg|length %}
+                 {{ level_msg }}
+            {% endif %}
+            <br>
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="niveau">Niveaux</label>
+                    <input type='text' name='niveau' placeholder="Entre niveau" required> 
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="classes">Classes organisez</label>
+                    <input type='number' name='classes' placeholder="Entre le chiffre qui correspons au nombre classes" required>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="form-item" style="width:90%; margin-bottom: 30px;">
+                    <p style="color:seagreen;">{{ notice }}</p>
+                    <p>{{ notice1 }}</p>
+                </div>
+
+                <div class="form-item">
+                    <button type="button" id="btn_save_level" onclick="formSumbit();">Enregistre</button>
+                </div>
+
+            </div>
+        </form>  
+    </div>
+</div> 
+
+
+<div id="classes-pop-screen1" class="classes-pop-modal" style="display:none;">
+    <div id="classes-pop-form" class="pop-form animate">
+        <span class="close" onclick="closeClassesModal3()">×</span>
+        <form action="" method="post"  id="main_form_faculty" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoutez les facultes</h1>
+            </div>
+            {% if faculty_msg|length %}
+                 {{ faculty_msg }}
+            {% endif %}
+            <div id="form-box-style" >  
+                <br>
+                <div class="form-item" style="width:90%;">
+                    <label for="">Niveau</label>
+                    <select name='select_level' id="select_level" required>
+                        <option>selection de niveau</option>
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Classe</label>
+                    <select name='select_classe' id='select_classe' required>
+                        <option>selection de classe</option>
+                    </select>
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="">Faculte</label>
+                    <input type='text' name="add_faculte" placeholder="Entre faculte" required>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="form-item" style="width:90%;">
+                    <p style="color:seagreen;">Cette partie est reserve uniquement pour le niveau secondaire</p>
+                </div>
+
+                <div class="form-item">
+                    <button type="button" id="btn_save_faculty">Enregistre</button>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+
+
+<div id="classes-main-content-right" style="display: none">
+    <div class="top-classes-main-content-right">
+        <h1>Enregistre les niveaux et les classes que vous arganisez...</h1>
+    
+        <div class="one-top-classes-main-content-right">
+            <div class="classes-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_admin_t1">
+            </div>
+
+            <div class="classes-right-box">
+                <ul id="ajoute-box">
+                    <li>
+                        <a onclick="openClassesModal2()" ><b style="font-size: 20px;">+</b>Niveau</a>
+						<a onclick="openClassesModal3()" ><b style="font-size: 20px;">+</b>Faculty</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <div class="classes-left-box" style="width: 95.5%; margin-left: 5px;">
+            <div class="classes-form-content">
+                <form action="" method="post" id='main_form_show_level_details' autocomplete="off" style="width: 100%;">
+                    {% csrf_token %}
+                    <select name="display_level_list" id='display_level_list'>
+                        <option value="" selected disabled hidden>Selectionne_niveau</option>
+                    </select>
+                    
+                    <button type="button" id="btn_diplay_todo_level">Enregistre</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-classes-main-content-right">
+        <table style="width: 98%; overflow-x:auto;" id="main_classes_t1" class="order-table table">
+            <thead>
+                <tr>
+                    <th  scope='col'>
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th>Niveau</th>
+                    <th>Classe</th>
+                    <th>Faculte</th>
+
+                </tr>
+            </thead>
+            <tbody id="update_tbl1">
+               
+              {% if displayLevel|length %}
+                    {% for niveau in displayLevel %}
+                        <tr>
+                            <td scope='col'>
+                                <span>
+                                    <input id="action-toggle" name="selectTbl" 
+                                     type="checkbox" value="{{ niveau.id }}">
+                                </span>
+                            </td>
+                            <td>{{ niveau.level }}</td>
+                            <td>{{ niveau.classes }}</td>
+                            <td>{{ niveau.faculty }}</td>
+                        </th>
+                    {% endfor %}
+                    
+            {% endif %}
+            </tbpdy>
+            
+        </table>
+    </div>
+</div> 
+

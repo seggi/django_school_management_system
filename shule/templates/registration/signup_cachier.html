@@ -1,0 +1,97 @@
+<div id="admin-pop-screen" class="admin-pop-modal" style="display: none;">
+    <div id="admin-pop-form" class="pop-form animate">
+        <span class="close" onclick="closeAdminModal()">×</span>
+        <form action="" method="post"  id="admin_save_cachier">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoute l'utilisateur</h1>
+            </div>
+            {% if error_message %}
+                 {{ error_message }}
+            {% endif %}
+            
+            
+            <div id="form-box-style" >  
+
+                {% for field in cachier_form %}
+                <p> 
+                    <div class="form-item" style="width:90%;">
+                        {{ field.label_tag }}<br>
+                            {{ field }}
+                        {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                </p>
+                {% endfor %}
+ 
+                <p id='test'></p>
+                
+
+                <div class="form-item">
+                    <!-- <input type="submit" name="submitbtn1"  onclick="formSumbit();" value="Enregistre"> -->
+                    <button type="button" id="btn_save_cachier">Enregistre</button> 
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+
+
+
+
+
+<!-- <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.first_name.id_for_label }}">Nom</label>
+                    {{ cachier_form.firstname }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.last_name.id_for_label }}">Post-Nom</label>
+                    {{ cachier_form.lastname }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.nick_name.id_for_label }}">Prenom</label>
+                    {{ cachier_form.nickname }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.gender.id_for_label }}">Genre</label>
+                    {{ cachier_form.gender }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.email.id_for_label }}">Email</label>
+                    {{ cachier_form.email }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.phone.id_for_label }}">Phone</label>
+                    {{ cachier_form.phone }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.address.id_for_label }}">Addresse</label>
+                    {{ cachier_form.address }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.username.id_for_label }}">Nom d'utilisateur</label>
+                    {{ cachier_form.username }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.password1.id_for_label }}">Mot de passe</label>
+                    {{ cachier_form.password1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.password2.id_for_label }}">Reppetez le mot de passe</label>
+                    {{ cachier_form.password2 }}
+                   
+                </div>  -->

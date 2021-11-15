@@ -1,0 +1,68 @@
+ {% include   'registration/signup_cachier.html' %}
+ {% include 'registration/signup_sec.html' %}
+
+
+<div id="admin-main-content-right" style="display: none">
+    <div class="top-admin-main-content-right">
+        <h1>Personnels adminstrative</h1>
+    
+        <div class="one-top-admin-main-content-right">
+            <div class="admin-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_admin_t1">
+            </div>
+
+            <div class="admin-right-box">
+                <ul id="ajoute-box">
+                    <li>
+                        <a onclick="openAdminModal()" ><b style="font-size: 20px;">+</b> caissier(e)</a>
+                        <a onclick="openAdminModal1()"><b style="font-size: 20px;">+</b> secretaire(e)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <div class="admin-left-box" style="width: 95.5%; margin-left: 5px;">
+            <div class="admin-form-content">
+                <form action="" method="post" id="display_staff_tb" autocomplete="off" style="width: 100%;">
+                    {% csrf_token %}
+                    <select name="admin-fonction">
+                        <option value="" selected disabled hidden>Selectionne une fonction</option>
+                        {% for key, values in fonctions.items %}
+                            <option value="{{ key }}">{{ values }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="button" value="Affichez" style="margin-left: 5px; margin-top: 10px;"
+                     id="display_staff">Affichez</button>
+                    <!-- <input type="submit" value="Affichez"> -->
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-admin-main-content-right">
+        <table style="width: 98%; overflow-x:auto;" id="main_staff_tbl" class="order-table table">
+            <thead>
+                <tr>
+                    <th  scope='col'>
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th>Nom</th>
+                    <th>Post-Nom</th>
+                    <th>Genre</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Addresse</th>
+                    <th>Nom utilizateur</th>
+
+                </tr>
+            </thead>
+            <tbody id="update_tbl">
+             <!-- Get data from js check ajax data -->
+            </tbpdy>
+        </table>
+    </div>
+</div> 
+

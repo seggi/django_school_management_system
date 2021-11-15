@@ -1,0 +1,255 @@
+<!-- POP affiche -->
+<div class="small_pop_screen" id="small_pop_screen">
+    <!-- Invisible form  -->
+    <form style="visibility: hidden;" id="hidden-form">
+        {% csrf_token %}
+        <input type="hidden" name="result_hidden1" id="result_hidden1">
+    </form>
+    
+    <form  autocomplete="on" id="search_student_form" onsubmit="required();">
+        <span id="cachier-close" onclick="closeStudentSearchModal()">×</span>
+        {% csrf_token %}
+        <h1 style="font-weight: 300; font-size: 18px; ">Rechercher un eleve</h1>
+
+        <div id="search-student-select">
+            <select name='student_level' id='student_level'>
+                <option>selection_de_niveau</option>
+            </select>
+            <select name="student_classe" id='student_classe'>
+                    <option>selection_de_classe</option>
+            </select>
+            <select name='student_facutly' id='student_facutly'>
+                <option>selection_de_faculte</option>
+            </select>
+        </div>
+       
+        <div class="search-student_input">
+
+            <input type="text" placeholder="Nom" autocomplete="on" name='searchinput1'  
+                    id="searchinput"  onkeyup="searchOpen()" >
+
+            <input type="text" placeholder="Post-nom" autocomplete="on" name='searchinput2' 
+                    id="searchinput"  onkeyup="searchOpen()">
+
+            <input type="text" placeholder="Pres-nom" autocomplete="on" name='searchinput3' 
+                    id="searchinput" onkeyup="searchOpen()">
+            
+            <input type="hidden" name="result_hidden" id="result_hidden">
+        
+        <button type="button" style=" margin-top: 10px; margin-bottom: 10px;
+                        border: 1px solid dodgerblue; width: 200px;"
+                    id="btn_search_student" onclick="displayStudentSearch()">Afficher</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="employee-main-content-right" id="employee-main-content-right1" style="display: none;">
+    <div class="top-employee-main-content-right">
+        <h1>Justificaf de solde...</h1>
+       
+        <div class="cachier-pop-modale-right-session">
+            <ul id="ajoute-box1" style="margin-left: 0px;">
+                <li>
+
+                    <div class="dropdown1">
+                        <a  id="fixebtn" href='#' onclick="displaysDropdown()" class="dropdownbtn">Paiement</a>
+                        <div id="contentDropDown" class="box-content">
+                            <a href="#afficher" id="student_search" onclick="openStudentSearchModal()">Afficher</a>
+                            <a href="#periode" id="">Periode</a>
+                        </div>
+                    </div>
+                   
+                    <a id="fixebtn" href='#' onclick="openExtendPaiement()">Recouvre</a>
+                    <a id="fixebtn" href='#' onclick="displayFeeSearch()">Les frais</a>
+                </li>
+            </ul>
+        </div>
+       
+        <!-- Display Paiement++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <div class="one-top-employee-main-content-right" style="width: 96%; display: none;" 
+                        id="one-top-employee-main-content-right">
+            <div class="cachier-pop-modale" style="display:flex; width: 100%;  ">
+                <!-- ################################ TO BE MANAGE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+                <div classe="cachier-pop-modale-right" style="width: 70%; display: inline-flex;margin-top: -10px; 
+                                    border: 1px solid rgb(211, 211, 211); background: #f8f8f8; "> <!--TO BE MANAGE-->
+                    <div style=" box-sizing: content-box; margin-top: -10px; width: 50%;" id='student-id'>
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Nom</h2>
+                            <div id="update_connte1"><h2>Ras</h2></div>
+                        </div> 
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Classe</h2>
+                            <div id="update_connte2"><h2>Ras</h2></div>
+                        </div>
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Faculte</h2>
+                            <div id="update_connte3"><h2>Ras</h2></div>
+                        </div> 
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Num Id</h2>
+                            <div id="update_connte4"><h2>Ras</h2></div>
+                        </div> 
+                    </div> 
+                    <div class="student-content-id" id='student-id'>
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Montant tot</h2>
+                            <div id="update_connte5"><h2>Ras</h2></div>
+                        </div> 
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Solde</h2>
+                            <div id="update_connte6"><h2>Ras</h2></div>
+                        </div> 
+
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Periode du</h2>
+                            <div id="update_connte7"><h2>Ras</h2></div>
+                        </div> 
+
+                        <!-- <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Periode du</h2>
+                            <div id="update_connte7"><h2>Ras</h2></div>
+                            
+                        </div>  -->
+
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">au</h2>
+                            <div id="update_connte8"><h2>Ras</h2></div>
+                            
+                        </div> 
+                    </div>
+                </div>
+                
+                <div classe="cachier-pop-modale-right" style="width: 40%;  margin-top: -10px;">
+                    
+                    <div class="show-paiement-content">
+                        <form action="" id="save_student_payment_form" autocomplete="off" style="width: 100%; ">
+                            {% csrf_token %}
+                            <select  name="payementtype_id">
+                                <option selected disabled>type_de_payment</option>
+                                {% if payementtype|length %}
+                                    {% for key in  payementtype %}
+                                        <option value="{{ key.id }}">{{ key.title }}</option>
+                                    {% endfor %}
+                                {% else %}
+                                    <option>La_list_est_encore_vide</option>
+                                {% endif %}
+                            </select>
+                            <input style="width: 90%; padding-left: 10px;" type="text" name="designation_amount" placeholder="Libelle" >
+                            <input style="width: 90%; margin-left: 10px;" type="number" name="save_student_payment" placeholder="Entre le montant" >
+                            <input type="hidden" name="get_student_id" id="update_connte9">
+                            <button type="button" id="btn_save_amount_student">Enregitre</button>
+                        </form>
+                    </div>
+                    
+                </div> 
+            </div>
+            <br>
+        </div>
+
+
+        <!-- Display fee +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <div class="one-top-employee-main-content-right" style="width: 96%; display: none;" 
+                        id="one-top-employee-main-content-right1">
+            <div class="cachier-pop-modale" style="display:flex; width: 100%;  ">
+                <!-- ################################ TO BE MANAGE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+                <div classe="cachier-pop-modale-right" style="width: 70%; display: inline-flex;margin-top: -10px; 
+                                    border: 1px solid rgb(211, 211, 211); background: #f8f8f8; "> <!--TO BE MANAGE-->
+                    <div style=" box-sizing: content-box; margin-top: -10px; width: 50%;" id='student-id'>
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Niveau </h2>
+                            <div id="update_conntec1"><h2>Ras</h2></div>
+                        </div> 
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Classe</h2>
+                            <div id="update_conntec2"><h2>Ras</h2></div>
+                        </div>
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Faculte</h2>
+                            <div id="update_conntec3"><h2>Ras</h2></div>
+                        </div> 
+                        <div class='student-id' style="display: flex; margin: 5px; padding: 2px;">
+                            <h2 style="font-weight: 400; font-size: 18px;">Montant total a payer</h2>
+                            <div id="update_conntec4"><h2>Ras</h2></div>
+                        </div> 
+                    </div> 
+                   
+                </div>
+                
+                <div classe="cachier-pop-modale-right" style="width: 40%;  margin-top: -10px;">
+                    
+                    <div class="show-paiement-content">
+                        <!-- <form action="" id="display_form_fee_type_cachier" autocomplete="off" style="width: 100%; ">
+                            <select name='student_level1' id='student_level1'>
+                                <option>selection_de_niveau</option>
+                            </select>
+                            <select name="student_classe1" id='student_classe1'>
+                                    <option>selection_de_classe</option>
+                            </select>
+                            <select name='student_facutly1' id='student_facutly1'>
+                                <option>selection_de_faculte</option>
+                            </select>
+                            <input type="hidden" name="fee_type_cachier">
+                            <button type="button" id="btn_diplay_fee_type_cachier" style="width: 60%; margin-left: 20%;">Afficher</button>
+                        </form> -->
+                    </div>
+                    
+                </div> 
+            </div>
+            <br>
+        </div>
+
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <p style="margin-left: 30px; font-weight: bold">Time:  <span id="datetime" style="color:red; font-weight: bold" ></span></p>
+        <div class="employee-left-box" id="employee-left-box" style="width: 96%; display: none; height: 50px;" >
+            <div style="width: 40%; float: right; display: flex;">
+                <input type="search" data-table="order-table" placeholder="Filtre dans le tableau..." class="search_admin_t1"  
+                            style="float: left; width: 300px; margin-top: 5px; padding: 18px;">
+            </div>
+
+            <div style="width: 60%; display: flex;">
+                <form action="" id="display_form_fee_type_cachier" autocomplete="off" style="width: 60%; display:inline-flex; height: 50px;">
+                    {% csrf_token %}
+                    <select name='student_level1' id='student_level1' style="padding: 8px; margin-top: 5px;">
+                        <option>selection_de_niveau</option>
+                    </select>
+                    <input type="hidden" name="fee_type_cachier">
+                    <button type="button" id="btn_diplay_fee_type_cachier" style="width: 70px; height: 37px; margin-top: 5px;
+                                        border: 1px solid dodgerblue;">Afficher</button>
+                </form>
+
+                <form id="search_range_form" style="width: 60;float:right; margin-top: 5px; display: none;">
+                    {% csrf_token %}
+                    <p style="align-self: center;">Du</p>
+                    <input type="date" name="date1" style="width: 50%; padding: 8px; margin-top: auto;">
+                    <p style="align-self: center;">au</p>
+                    <input type="date" name="date2"  style="width: 50%; padding: 8px; margin-top: auto;">
+                    <input type="hidden" name="range_student_u" id="range_student_u">
+                    <button type="button" id="btn_search_range" style="width: 70px; height: 37px; margin-top: 0px;
+                                        border: 1px solid dodgerblue;">Afficher</button>
+                </form>
+
+                <button type="button" id="btn_search_student1" style="width: 70px; height: 37px; margin-top: 5px;
+                                        border: 1px solid dodgerblue; margin-left: 5px;">Details</button>
+                <button type="button" id="btn_print_student1" style="width: 80px; height: 37px; margin-top: 5px;
+                border: 1px solid dodgerblue; margin-left: 5px;">Impremer</button>
+                <!-- <a href="#details" id="btn_search_student1">Details</a> -->
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="bottom-employee-main-content-right" id="bottom-employee-main-content-right" style="display: none;">
+    
+    </div>
+
+    <div class="bottom-employee-main-content-right" id="bottom-employee-main-content-right1" style="display: none;">
+    
+    </div>
+    <div class="bottom-employee-main-content-right" id="bottom-employee-main-content-right2" style="display: none;">
+    
+    </div>
+
+     <!-- Display recouvrement page ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+     {% include "shule/staffs/cachier/extend_paiement.html" %}
+</div> 

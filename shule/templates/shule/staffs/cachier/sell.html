@@ -1,0 +1,74 @@
+<!-- <div id="modal2-window"> -->
+<div id="sell-pop-screen" class="cours-pop-modal" style="display:none;">
+    <div id="modal" class="pop-form animate" style="height:auto;">
+        <span class="close" onclick="closeSellModal()">×</span>
+        <!-- <div class="modal" id="modal2"> -->
+        <form id="form-save-amount-article">
+            {% csrf_token %}
+            <label>Vendre</label>
+            <select name="article_function">
+                <option selected disabled>fait_une_selection</option>
+                {% if articleCategory|length %}
+                    {% for article in articleCategory %}
+                        <option value="{{ article.id }}">{{ article.article  }}</option>
+                    {% endfor %}
+                {% else %}
+                    <option>La_list_est_encore_vide</option>
+                {% endif %}
+            </select>
+            <input type="text" name="designation" placeholder="Entre designation">
+            <input type="number" name="entre_amount" placeholder="Entre montant">
+            <input type="hidden" name="article_sold_amount" id="article_id_avance">
+            <button type="button" id="btn-article-amount">Enregistre</button>
+        </form>
+    </div>
+</div>
+
+<div class="employee-main-content-right" id="employee-main-content-right3" style="display: none; height: inherit">
+    <div class="top-employee-main-content-right">
+        <h1>Vente...</h1>
+        
+        <p style="margin-left: 30px; font-weight: bold">Time:  <span id="datetime1" style="color:red; font-weight: bold" ></span></p>
+        
+        <div class="details-modals" style="display: block;">
+            <div class="inner-person-modals">
+                <div class="details-left">
+                    <div class="product-details">
+                        <label id="productname"></label>
+                        <h2 id="totsell" ></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="employee-left-box" id="search_content_default" >
+            <input type="search" data-table="order-table" placeholder="Filtre dans le tableau..." class="search_admin_t1"  
+                            id="defaulty_search">
+                            {{ seggi }}
+            <div class="button_align_bar">
+                <div style="width: 50%; display: inline-flex; margin-left: 30px;">
+                    <form  id="hidden_form_article_display" style="width: 70%;">
+                        {% csrf_token %}
+                        <select name="article_function" style="float: right; width: 70%; margin-top: 0px; margin-left: 0; height: 37px; ">
+                            <option selected disabled>fait_une_selection</option>
+                            {% if articleCategory|length %}
+                                {% for article in articleCategory %}
+                                    <option value="{{ article.id }}">{{ article.article  }}</option>
+                                {% endfor %}
+                            {% else %}
+                                <option>La_list_est_encore_vide</option>
+                            {% endif %}
+                        </select>
+                        <input type="hidden" name="article_hidden">
+                    </form>
+                    <button type="button" id="btn_display_article" class="principalbtn" style="margin-left: 0px;  ">Produits</button>
+                </div>
+                <button type="button" id="btn_print_article" class="principalbtn" onclick="openSellModal();">Vendre</button>
+                <button type="button" id="btn_print_article" class="principalbtn">Imprimer</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bottom-employee-main-content-right" id="bottom-employee-main-content-right5" style="display: block;"></div>
+</div> 

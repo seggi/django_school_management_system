@@ -1,0 +1,244 @@
+<div id="employee-pop-screen" class="employee-pop-modal" style="display: none;">
+    <div id="employee-pop-form" class="pop-form animate">
+        <span class="close" onclick="closeemployeeModal()">×</span>
+        <form action="" method="post"  id="main_form_cachier" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoute l'utilisateur</h1>
+            </div>
+            {% if error_message %}
+                 {{ error_message }}
+            {% endif %}
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.first_name.id_for_label }}">Nom</label>
+                    {{ cachier_form.first_name }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.last_name.id_for_label }}">Post-Nom</label>
+                    {{ cachier_form.last_name }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.nick_name.id_for_label }}">Prenom</label>
+                    {{ cachier_form.nick_name }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.gender.id_for_label }}">Genre</label>
+                    {{ cachier_form.gender }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.age.id_for_label }}">Age</label>
+                    {{ cachier_form.age }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.email.id_for_label }}">Email</label>
+                    {{ cachier_form.email }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.phone.id_for_label }}">Phone</label>
+                    {{ cachier_form.phone }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.address.id_for_label }}">Addresse</label>
+                    {{ cachier_form.address }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.username.id_for_label }}">Nom d'utilisateur</label>
+                    {{ cachier_form.username }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.password1.id_for_label }}">Mot de passe</label>
+                    {{ cachier_form.password1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ cachier_form.password2.id_for_label }}">Reppetez le mot de passe</label>
+                    {{ cachier_form.password2 }}
+                    <input type="hidden" name="function" value="caissier">
+                </div>
+
+                <div class="form-item">
+                    <input type="submit" name="submitbtn1" value"Enregistre">
+                    {% comment %} <button type="button" id="btn_save_cachier" onclick="formSumbit();">Enregistre</button> {% endcomment %}
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+{% comment %} Sec Register {% endcomment %}
+
+
+<div id="employee-pop-screen1" class="employee-pop-modal" style="display: none;">
+    <div id="employee-pop-form" class="pop-form animate">
+        <span class="close" onclick="closeemployeeModal1()">×</span>
+        <form action="" method="post"  autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoute l'utilisateur</h1>
+            </div>
+            {% if error_message1 %}
+                 {{ error_message1 }}
+            {% endif %}
+            <div id="form-box-style" >  
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.first_name1.id_for_label }}">Nom</label>
+                    {{ sec_form.first_name1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.last_name1.id_for_label }}">Post-Nom</label>
+                    {{ sec_form.last_name1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.nick_name1.id_for_label }}">Prenom</label>
+                    {{ sec_form.nick_name1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.gender1.id_for_label }}">Genre</label>
+                    {{ sec_form.gender1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.age1.id_for_label }}">Age</label>
+                    {{ sec_form.age1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.email1.id_for_label }}">Email</label>
+                    {{ sec_form.email1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.phone1.id_for_label }}">Phone</label>
+                    {{ sec_form.phone1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.address1.id_for_label }}">Addresse</label>
+                    {{ sec_form.address1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.username1.id_for_label }}">Nom d'utilisateur</label>
+                    {{ sec_form.username1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.password11.id_for_label }}">Mot de passe</label>
+                    {{ sec_form.password11 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.password21.id_for_label }}">Reppetez le mot de passe</label>
+                    {{ sec_form.password21 }}
+                    <input type="hidden" name="function" value="secretaire">
+                </div>
+
+                <div class="form-item">
+                    <input type="submit" name="submitbtn2" value="Enregistre">
+                    {% comment %} <button type="button" id="submit_cachier">Enregistre</button>{{% endcomment%}
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
+
+
+<div id="employee-main-content-right" style="display: block">
+    <div class="top-employee-main-content-right">
+        <h1>Personnels </h1>
+    
+        <div class="one-top-employee-main-content-right">
+            <div class="employee-left-box">
+                <input type="search" data-table="order-table"
+                    placeholder="Cherchez par nom..." class="search_employee_t">
+            </div>
+
+            <div class="employee-right-box">
+                <ul id="ajoute-box">
+                    <li>
+                        <a onclick="openemployeeModal()" ><b style="font-size: 20px;">+</b> Enseignant(e)</a>
+                        <a onclick="openemployeeModal1()"><b style="font-size: 20px;">+</b> Autres(e)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+         <div class="employee-left-box" style="width: 95.5%; margin-left: 5px;">
+            <div class="employee-form-content">
+                <form action="" method="post" autocomplete="off" style="width: 100%;">
+                    {% csrf_token %}
+                    <select name="employee-fonction">
+                        <option value="" selected disabled hidden>Selectionne une fonction</option>
+                        {% for key, values in fonctions.items %}
+                            <option value="{{ key }}">{{ values }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Affichez">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-employee-main-content-right">
+        <table style="width: 98%; overflow-x:auto;" id="main_employee_t" class="order-table table">
+            <thead>
+                <tr>
+                    <th  scope='col'>
+                        <span>
+                            <input id="action-toggle" type="checkbox" onclick="tableSelector(this);" value="select">
+                        </span>
+                    </th>
+                    <th>Nom</th>
+                    <th>Post-Nom</th>
+                    <th>Genre</th>
+                    <th>Age</th>
+                    <th>Fonction</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Addresse</th>
+                    <th>Nom utilizateur</th>
+
+                </tr>
+            </thead>
+            <tbody>
+              {% if display_employee|length %}
+                    {% for staffs in display_employee %}
+                        <tr>
+                            <td scope='col'>
+                                <span>
+                                    <input id="action-toggle" name="selectTbl" 
+                                     type="checkbox" value="{{ staffs.id }}">
+                                </span>
+                            </td>
+                            <td>{{ staffs.first_name }} {{ staffs.last_name }}</td>
+                            <td>{{ staffs.last_name }}</td>
+                            <td>{{ staffs.nick_name }}</td>
+                            <td>{{ staffs.age }}</td>
+                            <td>{{ staffs.gender }}</td>
+                            <td>{{ staffs.email }}</td>
+                            <td>{{ staffs.phone }}</td>
+                            <td>{{ staffs.address }}</td>
+                            <td>{{ staffs.username }}</td>
+                        </th>
+                    {% endfor %}
+                {% else %}
+                <p>La list des staff est vide</p>
+            {% endif %}
+            </tbpdy>
+        </table>
+    </div>
+</div> 
+

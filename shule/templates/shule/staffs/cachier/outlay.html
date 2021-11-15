@@ -1,0 +1,179 @@
+<form style="display: none;" id="employee-detail-form">
+    {% csrf_token %}
+    <input text="hidden" name="employee_detail" id="employee-detail">
+</form>
+
+<form style="display: none" id="histo-form">
+    {% csrf_token %}
+    <input text="hidden" name="histo_employee" id="histo-employee">
+</form>
+
+<form style="display: none;" id="dps-histo-form">
+    {% csrf_token %}
+    <input text="hidden" name="dps-histo">
+</form>
+
+
+<div id="modal1-window">
+    <div class="modal" id="modal1">
+        <form id="form-save-amount-employee">
+            {% csrf_token %}
+            <label>Avance sur Salaire</label>
+            <input type="text" name="designation" placeholder="Entre designation">
+            <input type="number" name="entre_amount" placeholder="Entre montant">
+            <input type="hidden" name="employee_id_avance" id="employee_id_avance">
+            <button type="button" id="btn-amount-employee">Enregistre</button>
+        </form>
+    </div>
+</div>
+
+<div id="dps-pop-screen" class="cours-pop-modal" style="display:none;">
+    <div id="modal" class="pop-form animate" style="height:auto;">
+        <span class="close" onclick="closeDepenseModal()">×</span>
+        <!-- <div class="modal" > -->
+            <form id="form-save-amount-dps">
+                {% csrf_token %}
+                <label>Autres Depenses</label>
+                <input type="text" name="designation" placeholder="Entre designation">
+                <input type="number" name="entre_amount" placeholder="Entre montant">
+                <input type="hidden" name="dps_id_avance" id="dps_id_avance">
+                <button type="button" id="btn-amount-dps">Enregistre</button>
+            </form>
+        <!-- </div> -->
+    </div>
+</div>
+
+
+<!-- POP outlay -->
+    <!-- Invisible form  -->
+<div class="small_pop_screen" id="small_pop_screen">
+    <form style="visibility: hidden;" id="hidden-form">
+        {% csrf_token %}
+        <input type="hidden" name="result_hidden1" id="result_hidden1">
+    </form>
+    
+    <form  autocomplete="on" id="search_student_form" onsubmit="required();">
+        <span id="cachier-close" onclick="closeStudentSearchModal()">×</span>
+        {% csrf_token %}
+        <h1 style="font-weight: 300; font-size: 18px; ">Rechercher un eleve</h1>
+
+        <input type="text" name="employee_name" placeholder="Entre le nom d'employee">
+       
+        <div class="search-student_input">
+
+            <input type="text" placeholder="Nom" autocomplete="on" name='searchinput1' 
+                id="searchinput"  onkeyup="searchOpen()" >
+
+            <input type="text" placeholder="Post-nom" autocomplete="on" name='searchinput2' 
+                id="searchinput"  onkeyup="searchOpen()">
+
+            <input type="text" placeholder="Pres-nom" autocomplete="on" name='searchinput3' 
+                id="searchinput" onkeyup="searchOpen()">
+            
+            <input type="hidden" name="result_hidden" id="result_hidden">
+        
+        <button type="button" style=" margin-top: 10px; margin-bottom: 10px;
+                        border: 1px solid dodgerblue; width: 200px;"
+                    id="btn_search_student" onclick="displayStudentSearch()">Afficher</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="employee-main-content-right" id="employee-main-content-right2" style="display: none; height: inherit">
+    <div class="top-employee-main-content-right">
+        <h1>Depenses...</h1>
+        
+        <p style="margin-left: 30px; font-weight: bold">Time:  <span id="datetime1" style="color:red; font-weight: bold" ></span></p>
+        
+        <div class="details-modals" id="details-modals">
+            <span id="person-close" onclick="closeDetails();">x</span>
+            <div class="inner-person-modals">
+                <div class="details-left">
+                    <div class="person-details">
+                        <label>Nom</label>
+                        <h2 id="name"></h2>
+                    </div>
+                    <div class="person-details">
+                        <label>Post-nom</label>
+                        <h2 id="lastname"></h2>
+                    </div>
+                    <div class="person-details">
+                        <label>Pre-nom</label>
+                        <h2 id="nickname"></h2>
+                    </div>
+                </div>
+                <div class="details-left">
+                    <div class="person-details">
+                        <label>Fonction</label>
+                        <h2 id="function"></h2>
+                    </div>
+                    <div class="person-details">
+                        <label>Salaire</label>
+                        <h2 id="salary"></h2>
+                    </div>
+                    <!-- <div class="person-details">
+                        <label>Payer</label>
+                        <h2 id="payer"></h2>
+                    </div> -->
+                </div>
+                <button type="button" id="btn-histo">Historique</button>
+            </div>
+        </div>
+
+        <div class="employee-left-box" id="search_content_default" >
+            <input type="search" data-table="order-table" placeholder="Filtre dans le tableau..." class="search_admin_t1"  
+                            id="defaulty_search">
+            
+            <div class="button_align_bar">
+                <div style=" width: 50%; display: inline-flex; margin-left: 30px;">
+                    <form  id="hidden_form_employee_display" style="width: 70%;">
+                        {% csrf_token %}
+                        <select name="employee_function" style="float: right; width: 70%; margin-top: 0px; margin-left: 0; height: 37px; ">
+                            <option selected disabled>fait_une_selection</option>
+                            {% if show_employee|length %}
+                                {% for employee in show_employee %}
+                                    <option value="{{ employee.id }}">{{ employee.function  }}</option>
+                                {% endfor %}
+                            {% else %}
+                                <option>La_list_est_encore_vide</option>
+                            {% endif %}
+                        </select>
+                    </form>
+                    <button type="button" id="btn_display_employee" class="principalbtn" style="margin-left: 0px;">Employee</button>
+                </div>
+                <button type="button" id="btn_print_student1" class="principalbtn" onclick="openDepenseModal()">Autres</button>
+                <button type="button" id="btn-dps-histo" class="principalbtn" >Historique</button>
+                <button type="button" id="btn_print_student1" class="principalbtn">Impremer</button>
+            </div>
+            <!-- <form id="showEmployeeDetails" style="visibility: hidden;">
+                {% csrf_token %}
+                <input type="hidden" name="emplaydetails" id="emplaydetails">
+            </form> -->
+
+        </div>
+    </div>
+    <div class="split-tbl-content">
+        <div class="bottom-employee-main-content-right" id="bottom-employee-main-content-right4" 
+                    style="display: block; float: left; width: 75%;"></div>
+        <div class="repport-right-content" id="dps-right-content">
+            <!-- <div class="dps-repport-right-content">
+                
+                <h2 id="getvaluedpTd"></h2>
+                <br/>
+                <h1>Nombre des contenus</h1>
+                <h2 id="getdpsContentTd"></h2> 
+
+            </div> -->
+            <br/>
+            <div class="dps-repport-right-content">
+                <h1>Total depenses</h1>
+                <h2 id="getvaluedp"></h2>
+                <br/>
+                <h1>Nombre des contenus</h1>
+                <h2 id="getdpsContent"></h2>
+            </div>
+        </div>
+
+    </div>
+</div> 

@@ -1,0 +1,95 @@
+{% comment %} Sec Register {% endcomment %}
+
+<div id="admin-pop-screen1" class="admin-pop-modal" style="display: none;">
+    <div id="admin-pop-form" class="pop-form animate">
+        <span class="close" onclick="closeAdminModal1()">×</span>
+        <form action="" method="post"  id="admin_save_secretary" autocomplete="off">
+            {% csrf_token %}
+            <div id="form-title">
+                <h1>Ajoute l'utilisateur</h1>
+            </div>
+            {% if error_message1 %}
+                 {{ error_message1 }}
+            {% endif %}
+            <div id="form-box-style" >  
+
+                {% for field in sec_form %}
+                <p> 
+                    <div class="form-item" style="width:90%;">
+                        {{ field.label_tag }}<br>
+                            {{ field }}
+                        {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                </p>
+                {% endfor %}
+                <p id='test1'></p>
+
+                <!-- <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.first_name1.id_for_label }}">Nom</label>
+                    {{ sec_form.first_name1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.last_name1.id_for_label }}">Post-Nom</label>
+                    {{ sec_form.last_name1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.nick_name1.id_for_label }}">Prenom</label>
+                    {{ sec_form.nick_name1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.gender1.id_for_label }}">Genre</label>
+                    {{ sec_form.gender1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.age1.id_for_label }}">Age</label>
+                    {{ sec_form.age1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.email1.id_for_label }}">Email</label>
+                    {{ sec_form.email1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.phone1.id_for_label }}">Phone</label>
+                    {{ sec_form.phone1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.address1.id_for_label }}">Addresse</label>
+                    {{ sec_form.address1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.username1.id_for_label }}">Nom d'utilisateur</label>
+                    {{ sec_form.username1 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.password11.id_for_label }}">Mot de passe</label>
+                    {{ sec_form.password11 }}
+                </div>
+
+                <div class="form-item" style="width:90%;">
+                    <label for="{{ sec_form.password21.id_for_label }}">Reppetez le mot de passe</label>
+                    {{ sec_form.password21 }}
+                    <input type="hidden" name="function" value="secretaire">
+                </div> -->
+
+                <div class="form-item">
+                    <button type="button" id="btn_save_secretary">Enregistre</button> 
+                    <!-- <input type="submit" name="submitbtn2" value="Enregistre"> -->
+                </div>
+            </div>
+        </form>  
+    </div>
+</div> 
